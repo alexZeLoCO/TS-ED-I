@@ -59,6 +59,9 @@ public class StackArrayList<E> {
 		return new SARITR4 ();
 	}
 
+	/**
+	 * Orden normal, izquierda a derecha. Utilizando indice.
+	 */
 	private final class SARITR1 implements Iterator<E> {
 		private int idx;
 
@@ -78,6 +81,9 @@ public class StackArrayList<E> {
 		}
 	}
 
+	/**
+	 * Orden normal, izquierda a derecha. Utilizando iterador interno.
+	 */
 	private final class SARITR2 implements Iterator<E> {
 		private Iterator<E> itr;
 
@@ -94,6 +100,9 @@ public class StackArrayList<E> {
 		}
 	}
 
+	/**
+	 * Orden Inverso (Tipo Pila). Utilizando indice.
+	 */
 	private final class SARITR3 implements Iterator<E> {
 		private int idx;
 
@@ -113,6 +122,9 @@ public class StackArrayList<E> {
 		}
 	}
 
+	/**
+	 * Orden Inverso (Tipo Pila). Utilizando iterador interno.
+	 */
 	private final class SARITR4 implements Iterator<E> {
 		private ListIterator<E> itr;
 		
