@@ -124,6 +124,7 @@ public class StackArrayList<E> {
 
 	/**
 	 * Orden Inverso (Tipo Pila). Utilizando iterador interno.
+	 * Optimizado por defecto para otros tipos de listas (LinkedList<E>)
 	 */
 	private final class SARITR4 implements Iterator<E> {
 		private ListIterator<E> itr;
