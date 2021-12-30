@@ -22,12 +22,15 @@ public class App {
 		LinkedList<E> aux = new LinkedList<E> ();
 
 		ListIterator<E> itr = l.listIterator(l.size()-1);
-		while(itr.hasPrevious()) {
-			itr.remove();
+		while(l.size() > index) {
+			itr.previous();
 			aux.add(0, itr.remove());	//Add head (Stack-like)
-			aux.add(itr.remove());		//Stack only
+			//aux.add(itr.remove());		//Stack only
 		}
 		l.addAll(c);
 		l.addAll(aux);
+		//NOT: l.addAll(c.addAll(aux));
+		//	1. addAll() returns boolean
+		//	2. Collection<? extends E> may not be mutable
 	}	
 }	
