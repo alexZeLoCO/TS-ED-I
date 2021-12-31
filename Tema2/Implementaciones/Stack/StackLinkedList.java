@@ -124,7 +124,7 @@ public class StackLinkedList<E> {
 		private int idx;
 
 		public SAITR (int idx) {
-			if (idx < 0 || idx > StackLinkedList.this.size()) {
+			if (idx < 0 || idx > StackLinkedList.this.nElements) {
 				throw new IndexOutOfBoundException();
 			}
 			this.idx = idx;
@@ -184,7 +184,7 @@ public class StackLinkedList<E> {
 		private Iterator<E> itr;
 
 		public SALITR2 (int idx) {
-			if (idx < 0 || idx > StackLinkedList.this.size()-1) {
+			if (idx < 0 || idx > StackLinkedList.this.nElements-1) {
 				throw new IndexOutOfBoundsException();
 			}
 			this.itr = StackLinkedList.this.data.iterator(idx);
@@ -244,7 +244,7 @@ public class StackLinkedList<E> {
 		private int idx;
 
 		public SALITR3 (int idx) {
-			if (idx < 0 || idx > StackLinkedList.this.size()-1) {
+			if (idx < 0 || idx > StackLinkedList.this.nElements-1) {
 				throw new IndexOutOfBoundsException();
 			}
 			this.idx = idx;
@@ -304,7 +304,7 @@ public class StackLinkedList<E> {
 		private Iterator<E> itr;
 	
 		public SALITR4 (int idx) {
-			if (idx < 0 || idx > StackLinkedList.this.size()-1) {
+			if (idx < 0 || idx > StackLinkedList.this.nElements-1) {
 				throw new IndexOutOfBoundsException();
 			}
 			this.itr = StackLinkedList.data.listIterator(idx);

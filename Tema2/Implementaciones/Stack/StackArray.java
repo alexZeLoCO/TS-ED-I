@@ -148,7 +148,7 @@ public class StackArray<E> {
 		private int idx;
 
 		public SAITR1 (int idx) {
-			if (idx < 0 || idx > StackArray.this.size()) {
+			if (idx < 0 || idx > StackArray.this.nElements) {
 				throw new IndexOutOfBoundException();
 			}
 			this.idx = idx;
@@ -208,7 +208,7 @@ public class StackArray<E> {
 		private int idx;
 
 		public SAITR12 (int idx) {
-			if (idx < 0 || idx > StackArray.this.size()) {
+			if (idx < 0 || idx > StackArray.this.nElements) {
 				throw new IndexOutOfBoundsException();
 			}
 			this.idx = idx;
