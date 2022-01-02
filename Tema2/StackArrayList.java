@@ -134,18 +134,10 @@ public class StackArrayList<E> {
 		}
 
 		public boolean hasNext() {
-			return this.itr.hasNext();
-		}
-
-		public boolean hasPrevious() {
 			return this.itr.hasPrevious();
 		}
 
 		public E next () {
-			return this.itr.next();
-		}
-
-		public E previous (){
 			return this.itr.previous();
 		}
 	}
