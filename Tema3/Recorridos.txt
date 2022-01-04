@@ -1,0 +1,11 @@
+Inorden:	InoRDen		IZQ	RAIZ	DER
+Preorden:	pReorden	RAIZ	IZQ	DER
+Posorden:	posorden	DER	RAIZ	IZQ
+
+
+Notas:
+Inorden: Primero la I de IZQ, despues la R de RAIZ y al final la D de DER.
+Preorden: Primero la R de RAIZ, despues IZQD y al final DER
+Posorden: Lo que queda por poner al principio, DER, RAIZ, IZQ
+
+Las IZQ hacen la diagonal principal.
