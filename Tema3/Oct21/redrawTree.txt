@@ -1,0 +1,27 @@
+	a
+|-------|---------------|
+b	d		e
+|	|	|-------|
+c	h	f	g
+
+
+Inorder (LCRS):
+cbdhefgea
+
+Inorder:
+cbahdfeg
+
+
+
+3.3
+	h
+	|
+b-------d---------------f
+|	|-------|	|
+c	a	e	g
+
+
+Inorder (LCRS):
+CBHADEGF
+Inorder:
+CBHADEGF
