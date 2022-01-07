@@ -34,7 +34,19 @@ public class Tree<E> {
 		int x = 0; 
 		Node<E> current = null;
 		Node<E> child = this.theRoot;
-		//TODO
+		while (child != null) {
+			current = child;
+			x = compare(e, current.label);
+			if (x == 0) {
+				return true;
+			}
+			if (x > 0) {
+				child = current.right;
+			} else {
+				child = current.left;
+			}
+		}
+		return false;	
 	}
 
 	/**
