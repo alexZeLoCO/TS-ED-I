@@ -1,5 +1,7 @@
 public class Tree<E> {
 	private Node<E> theRoot;
+	private int size;
+
 	private class Node<E> {
 		private E label;
 		private Node<E> left;
@@ -14,6 +16,45 @@ public class Tree<E> {
 
 	}
 
+	/**
+ 	 * Adds the element e to the Tree.
+ 	 *
+ 	 * @param e Element to be added.
+ 	 * 
+ 	 * @return True if the element was added.
+ 	 * @throws NullPointerException if e is null.
+ 	 */
+	public boolean add (E e) {
+		if (e == null) {
+			throw new NullPointerException();
+		}
+		if (this.isEmpty()) {
+			this.theRoot = new Node<E> (e);
+			this.size++;
+			return true;
+		}
+		int x = 0;
+		Node<E> current = null;
+		Node<E> child = this.theRoot;
+		while (child != null) {
+			current = child;
+			x = compare(e, current.label);
+			if (x > 0) {
+				child = current.right;
+			} else {
+				child = current.left;
+			}
+		}
+		if (x > 0) {
+			current.right = new Node<E> (e);
+			this.size++;
+			return true;
+		}
+		current.left = new Node<E> (e);
+		this.size++;
+		return true;
+	}
+		
 	/**
 	 * Note: It is actually meant to return the Node<E> not the Tree<E>.
 	 *
