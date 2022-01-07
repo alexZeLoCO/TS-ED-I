@@ -17,6 +17,27 @@ public class Tree<E> {
 	}
 
 	/**
+ 	 * Checks if a given element is in the tree.
+ 	 *
+ 	 * @param e Element to be searched.
+ 	 *
+ 	 * @return True if the element is in the tree.
+ 	 * @throws NullPointerException if e is null.
+ 	 */
+	public boolean contains (E e) {
+		if (e == null) {
+			throw new NullPointerException();
+		}
+		if (this.isEmpty()) {
+			return false;
+		}
+		int x = 0; 
+		Node<E> current = null;
+		Node<E> child = this.theRoot;
+		//TODO
+	}
+
+	/**
  	 * Adds the element e to the Tree.
  	 *
  	 * @param e Element to be added.

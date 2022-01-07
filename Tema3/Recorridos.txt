@@ -2,6 +2,9 @@ Inorden:	InoRDen		IZQ	RAIZ	DER
 Preorden:	pReorden	RAIZ	IZQ	DER
 Posorden:	posorden	DER	RAIZ	IZQ
 
+Inorden: raiz IN middle			|
+Preorden: raiz PRE ==> primera pos.	|-- IZQ siempre antes de DER
+Posorden: raiz POS ==> ultima pos.	|
 
 Notas:
 Inorden: Primero la I de IZQ, despues la R de RAIZ y al final la D de DER.
