@@ -1,0 +1,22 @@
+A) Def. private Map<E, Integer> data; // E es el tipo de elemento a incluir, Integer la cantidad de veces que aparece.
+B) Area de datos.
+
+	private TreeMap<E, Integer> data;
+	private int size;	//Map no tiene size() porque no es Iterable.
+
+C) Operacion Insercion.
+
+	public boolean add (E e, int n) {
+		if (e == null) {
+			throw new NullPointerException();
+		}
+		if (this.data.containsKey(e)) {
+			this.data.set(e, this.data.get(e).getValue() + new Integer (n));
+			return true;
+		}
+		this.data.put(e, new Integer (n));
+		return true;
+	}
+
+D) Complejidad.
+	log2(n)
