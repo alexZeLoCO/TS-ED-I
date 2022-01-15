@@ -1,0 +1,30 @@
+Crear multiconjunto con:
+
+									   COSTES
+clase		area de datos			add(E)		remove(Object)	contains(E)	addAll(Collection)
+
+LinkedList	private LinkedList		1		n		n		n
+
+ArrayList	private ArrayList		1		n		n		n
+
+HashSet		private HashSet<Map.Entry>	1(media)	1(media)	1(media)	n(media)
+		int size
+
+HashMap		private HashMap			1(media)	1(media)	1(media)	n(media)
+		int size
+
+TreeMap		private TreeMap			log		log		log		nlog
+		int size
+
+
+3. Implementar para todas las clases anteriores
+public boolean retainAll (Collection <? extends E> c) {
+	boolean out = true;
+	for(E e : this) {
+		if (!c.contains(e)) {
+			this.remove(e);
+			out = true;
+		}
+	}
+	return out;
+}
