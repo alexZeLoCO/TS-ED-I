@@ -5,7 +5,7 @@ import java.util.ListIterator;
 import java.util.function.Consumer;
 import estDatos.Tree;
 import estDatos.TreeImp;
-import estDatos.TreeCount;
+import estDatos.TreeCount;	
 
 public class Main<E> {
 	
@@ -18,6 +18,14 @@ public class Main<E> {
 	 */
 	public static <E> void inorder(Tree<E> t, Consumer<? super E> block) {
 		// Define esta función
+		Iterator<Tree<E>> itr = t.iteratorToChildren();
+		if (itr.hasNext()) {
+			inorder(itr.next(), block);
+		}
+		block.accept(t.label());
+		while (itr.hasNext()) {
+			inorder(itr.next(), block);
+		}
 	}
 	
 	public static void main(String[] args) {
