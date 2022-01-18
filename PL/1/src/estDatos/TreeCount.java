@@ -12,8 +12,9 @@ public class TreeCount<E> extends TreeImp<E> {
 	
 	public TreeCount (E e, Tree<E> ...trees) {
 		super(e, trees);
+		this.count = 1;
 		for (Tree<E> t : trees) {
-			count = TreeCount.numNodes(t);
+			count += TreeCount.numNodes(t);
 		}
 	}
 	
