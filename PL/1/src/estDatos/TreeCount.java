@@ -13,16 +13,22 @@ public class TreeCount<E> extends TreeImp<E> {
 	public TreeCount (E e, Tree<E> ...trees) {
 		super(e, trees);
 		this.count = 1;
-		for (Tree<E> t : trees) {
-			count += TreeCount.numNodes(t);
-		}
 	}
 	
 	public TreeCount (Tree<E> t) {
 		super(t);
-		count = TreeCount.numNodes(t);
+		this.count = 1;
 	}
 	
+	/**
+	 * Calculates the number of nodes in the tree.
+	 * 
+	 * @param <E> Elements of the tree.
+	 * @param t Tree
+	 * @return number of nodes in the tree.
+	 * 
+	 * @throws NullPointerException if the tree is null;
+	 */
 	public static <E> int numNodes (Tree<E> t) {
 		if (t == null) {
 			throw new NullPointerException();
@@ -47,12 +53,14 @@ public class TreeCount<E> extends TreeImp<E> {
 			}
 			this.count-=TreeCount.numNodes(this.children.remove(index));
 		} else {
+			int removed = 0;
 			if (index < this.children.size()) {
+				removed = TreeCount.numNodes(this.children.get(index));
 				this.children.set(index, t);
 			} else {
 				this.children.add(t);
 			}
-			this.count+=TreeCount.numNodes(t);
+			this.count+=(TreeCount.numNodes(t) - removed);
 		}
 	}
 }
