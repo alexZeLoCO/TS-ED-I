@@ -7,9 +7,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
 	// área de datos
+	private RedBlackTree<Map.Entry<K, V>> data;
 	
 	/**
 	 * Crea un diccionario vacío. Las claves estarán ordenadas
@@ -17,6 +20,7 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	 * @trhows ClassCastException si el tipo K no es Comparable
 	 */
 	public RedBlackTreeMap() {
+		this.data = new RedBlackTree<Map.Entry<K, V>> ();
 	}
 		
 	/**
@@ -29,6 +33,12 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	 * K no es Comparable
 	 */
 	public RedBlackTreeMap(Comparator<? super K> cmp) {
+		if (cmp == null) {
+			throw new NullPointerException();
+		}
+	    this.data = new RedBlackTree<Map.Entry<K, V>>
+	    		((Map.Entry<K, V> e1, Map.Entry<K, V> e2) ->
+			   	 cmp.compare(e1.getKey(), e2.getKey()));
 	}
 
 	/**
@@ -37,6 +47,8 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	 * @trhows ClassCastException si el tipo K no es Comparable
 	 */
 	public RedBlackTreeMap(Map<K, V> m) {
+		this();
+		this.data.addAll(m.entrySet());
 	}
 
 	/**
@@ -49,6 +61,8 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	 * K no es Comparable
 	 */
 	public RedBlackTreeMap(Map<K, V> m, Comparator<? super K> cmp) {
+		this(cmp);
+		this.data.addAll(m.entrySet());
 	}
 	
 	/**
@@ -58,6 +72,7 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	 * @param m diccionario a copiar
 	 */
 	public RedBlackTreeMap(SortedMap<K, V> m) {
+		this(m, m.comparator());
 	}
 	
 	/**
@@ -66,10 +81,28 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	 * del tipo de éstas.
 	 * @return el comparador de las claves del diccionario
 	 */
-	public Comparator<? super Map.Entry<K, V>> comparator() {
-		return null;
+	public Comparator <? super Map.Entry<K, V>> comparator() {
+		return this.data.comparator();
+	}
+
+	@Override
+	public Set<Entry<K, V>> entrySet() {
+		return new TreeSet<Map.Entry<K, V>> (this.data);
 	}
 	
 	// . . .  (resto de operaciones)
+	
+	@Override
+	public V put (K key, V value) {
+		for (Map.Entry<K, V> e : this.data) {
+			if (e.getKey().equals(key)) {
+				return  e.setValue(value);
+			}
+		}
+		TreeMap<K, V> aux = new TreeMap<K, V> ();
+		aux.put(key, value);
+		this.data.add(aux.firstEntry());
+		return null;
+	}
 	
 }
