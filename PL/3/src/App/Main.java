@@ -24,13 +24,16 @@ public static void main(String[] args) {
 	Tree<Character> t = TreeNode.createTree(preorder, inorder);
 
 	System.out.println(t.toString());			// (a [(b [(d [])(g [])])(e [(h [])])(i [])(k [(n [])])])
-	System.out.println();
 	System.out.print("Secuencia en inorden: ");
 	inorder(t, System.out::print);				// dbgaheink
-	System.out.println();
+	System.out.println("\n");
 
 	Tree<Character> t1 = new TreeNode<>(t);
 	System.out.println(t1.toString());
+	System.out.print("Secuencia en inorden: ");
+	inorder(t1, System.out::print);				// dbgaheink
+
+	System.out.println();
 	System.out.printf("\nt1.equals(t)? %b\n", t1.equals(t));	// true
 }
 

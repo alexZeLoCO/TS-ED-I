@@ -61,7 +61,12 @@ public abstract class AbstractTree<E> implements Tree<E> {
 	 * en caso contrario
 	 */
 	private static <E> boolean equality(Tree<E> t1, Tree<E> t2) {
-	    return false;
+		if (!t1.root().equals(t2.root())) {
+			return false;
+		}
+		return ((t1.rightSibling().isNull() && t2.rightSibling().isNull()) ||
+				(t1.firstChild().isNull() && t2.firstChild().isNull()) || 
+			     equality (t1.rightSibling(), t2.rightSibling()) && equality (t1.firstChild(), t2.firstChild()));
 	}
 
 	/**
