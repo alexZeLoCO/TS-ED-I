@@ -1,5 +1,7 @@
 package estDatos;
 
+import java.util.TreeSet;
+
 /**
  * Tipo de dato modificable para árboles ordenados con nodos etiquetados.
  *
@@ -49,54 +51,72 @@ public class TreeNode<E> extends AbstractTree<E> {
 	 */
 	@SafeVarargs
 	public TreeNode (E labelRoot, Tree<E>... trees) {
+		this(labelRoot);
+		this.setFirstChild(trees[0]);
+		Node<E> current = this.firstChild().root();
+		for (int i = 1 ; i < trees.length ; i++) {
+			current.setRight(trees[i].root());
+			current = current.right();
+		}
 	}
 	
 	/**
 	 * Crea un árbol ordenado copia del especificado.
 	 * @param t el árbol a copiar
 	 */
+	//FIXME
 	public TreeNode(Tree<E> t) {
-		theRoot = new Node<>(t.root());
+		this(t.root().label(), new TreeNode<E> (t.root().left()), new TreeNode<E> (t.root().right()));
 	}
 	
 	@Override
 	public boolean isNull() {
+		return this.theRoot.isNull();
 	}
 	
 	@Override
 	public boolean isLeaf() {
+		return this.firstChild().isNull();
 	}
 
 	@Override
 	public E labelRoot() {
+		return this.theRoot.label();
 	}
 	
 	@Override
 	public Node<E> root() {
+		return this.theRoot;
 	}
 
 	@Override
 	public Tree<E> firstChild() {
+		return new TreeNode<E> (this.theRoot.left());
 	}
 
 	@Override
 	public Tree<E> rightSibling() {
+		return new TreeNode<E> (this.theRoot.right());
 	}
 
 	@Override
 	public void setLabelRoot(E item) {
+		this.theRoot.setLabel(item);
 	}
 	
 	@Override
 	public void setRoot(Node<E> node) {
+		this.theRoot = node;
 	}
 	
 	@Override
 	public void setFirstChild(Tree<E> t) {
+		this.theRoot.setLeft(t.root());
 	}
 
 	@Override
 	public void setRightSibling(Tree<E> t) {
+		this.theRoot.setRight(t.root());
 	}
 
 }
