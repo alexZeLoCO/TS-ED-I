@@ -269,7 +269,7 @@ public class RedBlackTree<E> extends AbstractCollection<E> {
 	 * @return right child of the node.
 	 */
 	private Node right (RedBlackTree<E>.Node x) {
-		return x.right;
+		return (x.right == null) ? new Node (null) : x.right;
 	}
 
 	/**
@@ -279,7 +279,7 @@ public class RedBlackTree<E> extends AbstractCollection<E> {
 	 * @return left child of the node.
 	 */
 	private Node left (RedBlackTree<E>.Node x) {
-		return x.left;
+		return (x.left == null) ? new Node (null) : x.left;
 	}
 
 	/**

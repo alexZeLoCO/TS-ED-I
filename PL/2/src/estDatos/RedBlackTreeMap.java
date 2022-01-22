@@ -32,9 +32,12 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	 * interfaz Comparator o si {@code cmp} es {@code null} y el tipo
 	 * K no es Comparable
 	 */
+	@SuppressWarnings("unchecked")
 	public RedBlackTreeMap(Comparator<? super K> cmp) {
 		if (cmp == null) {
-			throw new NullPointerException();
+			this.data = new RedBlackTree<Map.Entry<K, V>>
+	    		((Map.Entry<K, V> e1, Map.Entry<K, V> e2) ->	    		
+	    		((Comparable<K>)e1.getKey()).compareTo(e2.getKey())); 
 		}
 	    this.data = new RedBlackTree<Map.Entry<K, V>>
 	    		((Map.Entry<K, V> e1, Map.Entry<K, V> e2) ->
@@ -91,6 +94,7 @@ public class RedBlackTreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V
 	}
 	
 	// . . .  (resto de operaciones)
+	// Operaciones para que sea modificable.
 	
 	@Override
 	public V put (K key, V value) {
