@@ -1,10 +1,11 @@
-package app;
+package App;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import estDatos.MultiDicImp;
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -26,7 +27,13 @@ public class main {
 		System.out.println();
 		
 		System.out.println("chair->"+m.getTranslation("British", "chair"));
-		System.out.println("cloud->"+m.getTranslation("British", "cloud"));
+		try {
+			System.out.println("cloud->"+m.getTranslation("British", "cloud"));
+		} catch (NoSuchElementException e) {
+			System.err.println("Exception caught:");
+			e.printStackTrace();
+			System.out.println();
+		}
 				
 		MultiDicImp m2 = new MultiDicImp (m);
 		MultiDicImp m3 = new MultiDicImp (m);
